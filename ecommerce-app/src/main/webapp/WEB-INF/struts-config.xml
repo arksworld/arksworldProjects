@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+
+    <!-- Form Beans -->
+    <form-beans>
+        <!-- Placeholder for future form beans -->
+        <form-bean name="productForm" type="org.arksworld.ecommerceapp.actionforms.ProductActionForm"/>
+        <form-bean name="cartForm" type="org.arksworld.ecommerceapp.actionforms.CartForm"/>
+        <form-bean name="checkoutForm" type="org.arksworld.ecommerceapp.actionforms.CheckoutForm"/>
+
+        <form-bean name="loginForm" type="org.apache.struts.action.DynaActionForm">
+            <form-property name="password" type="java.lang.String" />
+            <form-property name="email" type="java.lang.String" />
+        </form-bean>
+
+    </form-beans>
+
+    <global-forwards>
+        <forward name="adminDashboard" path="/views/admin/admin-dashboard.jsp" />
+        <forward name="login" path="/views/login.jsp"/>
+        <forward name="register" path="/views/register.jsp"/>
+    </global-forwards>
+
+    <!-- Action Mappings -->
+    <action-mappings>
+        <!-- User Registration Action -->
+        <action path="/register"
+                type="org.arksworld.ecommerceapp.actions.RegisterAction">
+            <forward name="success" path="/views/register-success.jsp"/>
+            <forward name="failure" path="/views/register.jsp"/>
+        </action>
+
+        <!-- User Login Action -->
+        <action path="/login"
+                type="org.arksworld.ecommerceapp.actions.LoginAction" name="loginForm" scope="request">
+            <forward name="browseProducts" path="/browseProducts.do"/>
+            <forward name="adminDashboard" path="/views/admin/admin-dashboard.jsp"/>
+            <forward name="failure" path="/views/login.jsp"/>
+        </action>
+
+        <action path="/logout" type="org.arksworld.ecommerceapp.actions.LogoutAction">
+            <forward name="success" path="/views/login.jsp"/>
+        </action>
+
+        <action path="/products" type="org.arksworld.ecommerceapp.actions.products.ProductAction" name="productForm"
+                scope="request" validate="false">
+            <forward name="form" path="product.form"/>
+            <forward name="success" path="productList"/>
+        </action>
+
+        <action path="/saveProducts" type="org.arksworld.ecommerceapp.actions.products.SaveProductAction"
+                name="productForm" scope="request" input="product.form">
+            <forward name="form" path="product.form"/>
+            <forward name="success" path="productList"/>
+        </action>
+
+        <action path="/browseProducts" type="org.arksworld.ecommerceapp.actions.products.BrowseProductsAction"
+                name="productForm" validate="false">
+            <forward name="success" path="/views/user/browse-products.jsp"/>
+            <forward name="login" path="/views/login.jsp" />
+        </action>
+
+
+        <!-- Shopping cart -->
+        <action path="/addToCart" type="org.arksworld.ecommerceapp.actions.products.AddToCartAction" name="cartForm" scope="request">
+            <forward name="success" path="/browseProducts.do" />
+        </action>
+        <action path="/viewCart" type="org.arksworld.ecommerceapp.actions.products.ViewCartAction">
+            <forward name="success" path="/views/user/cart.jsp" />
+        </action>
+        <action path="/updateCart" type="org.arksworld.ecommerceapp.actions.products.UpdateCartAction"  name="cartForm" scope="request">
+            <forward name="success" path="/viewCart.do" />
+        </action>
+        <action path="/removeFromCart" type="org.arksworld.ecommerceapp.actions.products.RemoveFromCartAction">
+            <forward name="success" path="/viewCart.do" />
+        </action>
+
+        <!-- Checkout -->
+        <action path="/viewCheckout" type="org.apache.struts.actions.ForwardAction" parameter="/views/user/checkout.jsp">
+            <forward name="success" path="/views/user/checkout.jsp" />
+        </action>
+
+        <action path="/checkout" type="org.arksworld.ecommerceapp.actions.user.order.CheckoutAction" name="checkoutForm" scope="request" input="/views/user/checkout.jsp">
+            <forward name="success" path="/views/user/order-summary.jsp" />
+            <forward name="failure" path="/viewCart.do" />
+        </action>
+
+
+        <!-- Order History -->
+        <action path="/orderHistory" type="org.arksworld.ecommerceapp.actions.user.order.ViewOrderHistoryAction">
+            <forward name="success" path="/views/user/order-history.jsp" />
+            <forward name="login" path="/views/login.jsp" />
+        </action>
+
+        <action path="/viewOrderDetails" type="org.arksworld.ecommerceapp.actions.user.order.ViewOrderDetailsAction">
+            <forward name="success" path="/views/user/order-details.jsp" />
+        </action>
+
+
+    </action-mappings>
+
+    <!-- Message Resources (Optional for i18n) -->
+    <message-resources parameter="labels.ApplicationResources"/>
+
+
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames" value="/WEB-INF/validation.xml,/WEB-INF/validator-rules.xml"/>
+    </plug-in>
+    <plug-in className="org.apache.struts.tiles.TilesPlugin">
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml"/>
+    </plug-in>
+
+</struts-config>

@@ -1,0 +1,44 @@
+<!DOCTYPE form-validation PUBLIC
+        "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1//EN"
+        "http://jakarta.apache.org/commons/dtds/validator_1_1.dtd">
+
+<form-validation>
+    <formset>
+        <form name="productForm">
+            <field property="name" depends="required">
+                <arg0 key="error.name.required" />
+            </field>
+            <field property="price" depends="required,mask">
+                <arg0 key="errors.price.required" />
+                <var>
+                    <var-name>mask</var-name>
+                    <var-value>^\d+(\.\d{1,2})?$</var-value>
+                </var>
+            </field>
+            <field property="categoryId" depends="required,integer">
+                <arg0 key="error.category.required" />
+            </field>
+            <field property="stock" depends="required,integer">
+                <arg0 key="error.stock.required" />
+            </field>
+        </form>
+
+        <form name="checkoutForm">
+            <!-- Validate Name -->
+            <field property="name" depends="required">
+                <arg0 key="error.name.required" />
+            </field>
+
+            <!-- Validate Address -->
+            <field property="address" depends="required">
+                <arg0 key="error.address.required" />
+            </field>
+
+            <!-- Validate Contact -->
+            <field property="contact" depends="required,integer">
+                <arg0 key="error.contact.required" />
+                <arg1 key="error.contact.integer" />
+            </field>
+        </form>
+    </formset>
+</form-validation>

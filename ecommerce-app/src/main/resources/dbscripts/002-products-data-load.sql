@@ -1,0 +1,38 @@
+USE ecommerce_app;
+
+-- Insert test data into Products table
+INSERT INTO Products (name, description, price, category_id, stock, image_url) VALUES
+('Samsung Galaxy S21', 'Latest Samsung Galaxy S21 with 128GB storage and 8GB RAM.', 799.99, 1001, 150, 'https://example.com/images/galaxy_s21.jpg'),
+('iPhone 13 Pro', 'Apple iPhone 13 Pro with 256GB storage, A15 Bionic chip.', 999.99, 1001, 100, 'https://example.com/images/iphone_13_pro.jpg'),
+('OnePlus 9 Pro', 'OnePlus 9 Pro with 256GB storage, Snapdragon 888 processor.', 899.99, 1001, 120, 'https://example.com/images/oneplus_9_pro.jpg'),
+('Google Pixel 6', 'Google Pixel 6 with 128GB storage, Google Tensor chip.', 599.99, 1001, 180, 'https://example.com/images/pixel_6.jpg'),
+('Xiaomi Mi 11', 'Xiaomi Mi 11 with Snapdragon 888, 8GB RAM and 128GB storage.', 749.99, 1001, 160, 'https://example.com/images/mi_11.jpg'),
+('Motorola Edge+', 'Motorola Edge+ with 256GB storage, Snapdragon 865 chipset.', 949.99, 1001, 130, 'https://example.com/images/motorola_edge+.jpg'),
+('Realme GT', 'Realme GT with 128GB storage, Snapdragon 870 chipset.', 549.99, 1001, 140, 'https://example.com/images/realme_gt.jpg'),
+('Sony Xperia 1 II', 'Sony Xperia 1 II with 128GB storage, 6GB RAM and Snapdragon 865.', 1199.99, 1001, 110, 'https://example.com/images/xperia_1_ii.jpg'),
+('Oppo Find X3 Pro', 'Oppo Find X3 Pro with Snapdragon 888, 12GB RAM.', 1149.99, 1001, 90, 'https://example.com/images/oppo_find_x3_pro.jpg'),
+('Asus ROG Phone 5', 'Asus ROG Phone 5 with Snapdragon 888, 16GB RAM, 512GB storage.', 1299.99, 1001, 50, 'https://example.com/images/rog_phone_5.jpg'),
+('Samsung Galaxy A52', 'Samsung Galaxy A52 with Snapdragon 720G, 6GB RAM, 128GB storage.', 399.99, 1001, 150, 'https://example.com/images/galaxy_a52.jpg'),
+-- Book Products
+('The Great Gatsby', 'A novel by F. Scott Fitzgerald set in the Jazz Age.', 10.99, 1002, 100, 'https://example.com/images/great_gatsby.jpg'),
+('1984', 'A dystopian social science fiction novel by George Orwell.', 14.99, 1002, 150, 'https://example.com/images/1984.jpg'),
+('To Kill a Mockingbird', 'A Pulitzer Prize-winning novel by Harper Lee.', 12.99, 1002, 200, 'https://example.com/images/to_kill_a_mockingbird.jpg'),
+('Moby Dick', 'The classic novel by Herman Melville about the pursuit of the great white whale.', 19.99, 1002, 120, 'https://example.com/images/moby_dick.jpg'),
+('War and Peace', 'A historical novel by Leo Tolstoy, regarded as one of the greatest novels of all time.', 24.99, 1002, 80, 'https://example.com/images/war_and_peace.jpg'),
+('Pride and Prejudice', 'A classic romantic novel by Jane Austen.', 9.99, 1002, 150, 'https://example.com/images/pride_and_prejudice.jpg'),
+('The Catcher in the Rye', 'A novel by J.D. Salinger about teenage angst and alienation.', 13.99, 1002, 110, 'https://example.com/images/catcher_in_the_rye.jpg'),
+('The Hobbit', 'A fantasy novel by J.R.R. Tolkien, the prequel to The Lord of the Rings.', 15.99, 1002, 130, 'https://example.com/images/the_hobbit.jpg'),
+('Crime and Punishment', 'A novel by Fyodor Dostoevsky exploring morality, guilt, and redemption.', 18.99, 1002, 140, 'https://example.com/images/crime_and_punishment.jpg'),
+('The Brothers Karamazov', 'A philosophical novel by Fyodor Dostoevsky exploring faith, doubt, and free will.', 22.99, 1002, 90, 'https://example.com/images/brothers_karamazov.jpg'),
+('Brave New World', 'A dystopian novel by Aldous Huxley about a future society governed by scientific principles.', 12.99, 1002, 170, 'https://example.com/images/brave_new_world.jpg'),
+('The Odyssey', 'An epic poem by Homer detailing the adventures of Odysseus.', 17.99, 1002, 100, 'https://example.com/images/the_odyssey.jpg'),
+('Frankenstein', 'A novel by Mary Shelley about the scientist Frankenstein and his monstrous creation.', 14.99, 1002, 120, 'https://example.com/images/frankenstein.jpg'),
+('Dracula', 'A gothic horror novel by Bram Stoker about the vampire Count Dracula.', 16.99, 1002, 160, 'https://example.com/images/dracula.jpg'),
+('The Picture of Dorian Gray', 'A novel by Oscar Wilde about a man whose portrait ages while he remains young.', 13.99, 1002, 150, 'https://example.com/images/picture_of_dorian_gray.jpg'),
+('Les Misérables', 'A historical novel by Victor Hugo that explores the struggles of the poor in post-revolutionary France.', 21.99, 1002, 110, 'https://example.com/images/les_miserables.jpg'),
+('The Alchemist', 'A novel by Paulo Coelho about a young man named Santiago and his journey to find treasure.', 11.99, 1002, 140, 'https://example.com/images/the_alchemist.jpg'),
+('Don Quixote', 'A novel by Miguel de Cervantes about the adventures of a man who believes he is a knight.', 19.99, 1002, 180, 'https://example.com/images/don_quixote.jpg'),
+('Anna Karenina', 'A novel by Leo Tolstoy about the tragic story of a married aristocrat and her affair.', 20.99, 1002, 150, 'https://example.com/images/anna_karenina.jpg'),
+('The Secret Garden', 'A children\'s novel by Frances Hodgson Burnett about a young girl who finds a secret garden.', 10.99, 1002, 160, 'https://example.com/images/secret_garden.jpg'),
+('The Divine Comedy', 'An epic poem by Dante Alighieri about a man’s journey through Hell, Purgatory, and Heaven.', 25.99, 1002, 90, 'https://example.com/images/divine_comedy.jpg'),
+('The Tale of Two Cities', 'A novel by Charles Dickens set during the French Revolution, contrasting London and Paris.', 14.99, 1002, 130, 'https://example.com/images/tale_of_two_cities.jpg');

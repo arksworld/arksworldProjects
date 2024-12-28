@@ -1,0 +1,21 @@
+# Ignore the target directory
+
+target/
+logs/
+
+
+# Ignore IDE specific files
+
+.project
+
+.settings/
+
+
+
+# Ignore generated files
+
+*.class
+
+*.log
+
+*.bat
