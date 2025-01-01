@@ -30,6 +30,13 @@ body {
     text-decoration: underline;
 }
 
+
+.header nav a {
+    color: yellow;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
 /* Buttons */
 button, .btn {
     background-color: #007bff;

@@ -18,30 +18,27 @@
      </c:otherwise>
      </c:choose>
     <nav>
-        <ul>
             <c:choose>
                 <%-- Admin Navigation --%>
                 <c:when test="${sessionScope.role == 'ADMIN'}">
-                    <li><a href="${pageContext.request.contextPath}/views/admin/admin-dashboard.jsp">Admin Dashboard</a></li>
-                    <li><a href="reports.jsp">Reports</a></li>
-                    <li><html:link action="/logout.do">Logout</html:link></li>
+                    <a href="${pageContext.request.contextPath}/views/admin/admin-dashboard.jsp">Admin Dashboard</a>
+                    <a href="reports.jsp">Reports</a>
+                    <html:link action="/logout.do">Logout</html:link>
                 </c:when>
                 <%-- User Navigation --%>
                 <c:when test="${sessionScope.role == 'USER'}">
-                    <li><html:link action="/browseProducts.do">Browse Products</html:link></li>
-                    <li><html:link action="/viewCart.do">View Cart</html:link></li>
-                         <logic:present name="cartItemCount">
-                            <span class="badge">${cartItemCount}</span>
-                         </logic:present>
-                    <li><html:link action="/orderHistory.do">Order History</html:link></li>
-                    <li><html:link action="/logout.do">Logout</html:link></li>
+                    <html:link action="/browseProducts.do">Browse Products</html:link>
+                    <html:link action="/viewCart.do">View Cart
+                        <logic:present name="cartItemCount">${cartItemCount}</logic:present>
+                    </html:link>
+                    <html:link action="/orderHistory.do">Order History</html:link>
+                    <html:link action="/logout.do">Logout</html:link>
                 </c:when>
                 <%-- Guest Navigation --%>
                 <c:otherwise>
-                <li><html:link forward="login">Login</html:link></li>
-                <li><html:link forward="register">Register</html:link></li>
+                    <html:link forward="login">Login</html:link>
+                    <html:link forward="register">Register</html:link>
                 </c:otherwise>
             </c:choose>
-        </ul>
     </nav>
 </div>

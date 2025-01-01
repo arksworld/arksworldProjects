@@ -29,6 +29,8 @@
         </logic:iterate>
     </table>
     </div>
+    4
+    
    <jsp:include page="../common/footer.jsp" />
 </body>
-ṇ</html>
+</html>
