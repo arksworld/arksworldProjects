@@ -1,0 +1,81 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Java and Maven
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21' # or your project's Java version
+          distribution: 'temurin'
+
+      - name: Set up Maven
+        uses: actions/setup-java@v3
+        with:
+          maven-version: '3.8.6' # or your preferred Maven version
+
+      # Step 3: Build the application and run unit tests
+      - name: Build and test
+        run: mvn clean install
+
+  load-test:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Start the application
+      - name: Start Spring Boot application
+        run: mvn spring-boot:run &
+        env:
+          SPRING_PROFILES_ACTIVE: test
+          SERVER_PORT: 8080 # Ensure it matches your application config
+
+      # Step 3: Run JMeter load tests
+      - name: Run load tests
+        uses: antonioribeiro/jmeter-action@v2.0.0
+        with:
+          file: loadtesting/jmeter/loadtest.jmx # Path to your JMeter test file
+          jmeter-version: 5.4.3
+          options: '-n -t load_test.jmx -l results.jtl'
+
+      # Step 4: Generate HTML report for load tests
+      - name: Generate load test report
+        run: jmeter -g results.jtl -o load_test_reports
+        env:
+          JMETER_HOME: /path/to/jmeter
+
+      # Step 5: Upload load test report
+      - name: Upload load test report
+        uses: actions/upload-artifact@v3
+        with:
+          name: load-test-report
+          path: load_test_reports
+
+      # Step 6: Stop the application
+      - name: Stop Spring Boot application
+        run: pkill -f 'spring-boot:run'
+
+  notify:
+    needs: [build-and-test, load-test]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Notify team
+        run: echo "CI/CD Pipeline completed successfully!"
