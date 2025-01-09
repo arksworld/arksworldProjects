@@ -22,12 +22,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '21' # or your project's Java version
-          distribution: 'temurin'
-
-      - name: Set up Maven
-        uses: actions/setup-java@v4
-        with:
-          maven-version: ${distribution} # or your preferred Maven version
+          distribution: 'temurin'  
 
       # Step 3: Build the application and run unit tests
       - name: Build and test
