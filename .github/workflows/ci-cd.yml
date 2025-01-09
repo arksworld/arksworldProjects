@@ -50,24 +50,10 @@ jobs:
       - name: Run load tests
         uses: rbhadti94/apache-jmeter-action@v0.5.0
         with:
-          file: loadtesting/jmeter/loadtest.jmx # Path to your JMeter test file
-          jmeter-version: 5.4.3
-          options: '-n -t load_test.jmx -l results.jtl'
+          testFilePath: loadtesting/jmeter/loadtest.jmx # Path to your JMeter test file
+          outputReportsFolder: reports/
 
-      # Step 4: Generate HTML report for load tests
-      - name: Generate load test report
-        run: jmeter -g results.jtl -o load_test_reports
-        env:
-          JMETER_HOME: /path/to/jmeter
-
-      # Step 5: Upload load test report
-      - name: Upload load test report
-        uses: actions/upload-artifact@v3
-        with:
-          name: load-test-report
-          path: load_test_reports
-
-      # Step 6: Stop the application
+      # Step 4: Stop the application
       - name: Stop Spring Boot application
         run: pkill -f 'spring-boot:run'
 
