@@ -27,7 +27,7 @@ jobs:
       - name: Set up Maven
         uses: actions/setup-java@v4
         with:
-          maven-version: '3.8.6' # or your preferred Maven version
+          maven-version: ${distribution} # or your preferred Maven version
 
       # Step 3: Build the application and run unit tests
       - name: Build and test
