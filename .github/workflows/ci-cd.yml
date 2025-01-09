@@ -48,7 +48,7 @@ jobs:
 
       # Step 3: Run JMeter load tests
       - name: Run load tests
-        uses: antonioribeiro/jmeter-action@v2.0.0
+          uses: rbhadti94/apache-jmeter-action@v0.5.0
         with:
           file: loadtesting/jmeter/loadtest.jmx # Path to your JMeter test file
           jmeter-version: 5.4.3
