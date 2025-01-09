@@ -27,8 +27,8 @@ jobs:
       # Step 3: Build the application and run unit tests
       - name: Build and test
         run: |
-        cd tinyurl
-        mvn clean install
+          cd tinyurl
+          mvn clean install
 
   load-test:
     needs: build-and-test
