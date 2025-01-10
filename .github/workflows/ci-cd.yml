@@ -55,7 +55,7 @@ jobs:
 
       # Step 4: Stop the application
       - name: Stop Spring Boot application
-        run: pkill -f 'spring-boot:run' || true
+        run: mvn spring-boot:stop
          
 
   notify:
