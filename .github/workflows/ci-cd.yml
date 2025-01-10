@@ -50,7 +50,7 @@ jobs:
       - name: Run load tests
         uses: rbhadti94/apache-jmeter-action@v0.7.0
         with:
-          testFilePath: src\main\resources\loadtesting\jmeter\loadtest.jmx # Path to your JMeter test file
+          testFilePath: src/main/resources/loadtesting/jmeter/loadtest.jmx # Path to your JMeter test file
           outputReportsFolder: reports/
 
       # Step 4: Stop the application
