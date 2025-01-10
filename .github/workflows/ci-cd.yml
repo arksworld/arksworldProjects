@@ -55,7 +55,10 @@ jobs:
 
       # Step 4: Stop the application
       - name: Stop Spring Boot application
-        run: pkill -f 'spring-boot:run'
+        run: |
+         pgrep -a 'spring-boot:run'
+         pkill -f 'spring-boot:run'
+         
 
   notify:
     needs: [build-and-test, load-test]
